@@ -142,5 +142,13 @@ func Edit(w http.ResponseWriter, r *http.Request) {
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
+	idString := r.URL.Query().Get("id")
+	id, err := strconv.Atoi(idString)
+	if err != nil {
+		panic(err)
+	}
 
+	productmodel.Delete(id)
+
+	http.Redirect(w, r, "/products", http.StatusSeeOther)
 }
