@@ -35,16 +35,36 @@
   <div class="container mt-3">
     <div class="row d-flex justify-content-center">
       <div class="col-4">
-        <h2>Add Categories</h2>
+        <h2>Add Products</h2>
         <hr>
-    
-        <form action="/categories/add" method="POST">
+
+        <form action="/products/add" method="POST">
           <div class="mb-3">
             <label class="form-label">Name</label>
             <input type="text" class="form-control" name="name" autocomplete="off" />
           </div>
+
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select class="form-select" name="category_id">
+              {{ range .categories}}
+              <option value="{{ .Id }}">{{ .Name }}</option>
+              {{ end }}
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Stock</label>
+            <input type="number" class="form-control" name="stock" autocomplete="off" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea type="text" class="form-control" name="descrription" rows="3"></textarea>
+          </div>
+
           <div class="float-end">
-            <a href="/categories" class="btn btn-secondary">Back</a>
+            <a href="/products" class="btn btn-secondary">Back</a>
             <button type="submit" class="btn btn-primary">Save</button>
           </div>
         </form>
